@@ -4,7 +4,7 @@ const app = express();
 const session = require("express-session");
 require("dotenv").config();
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
-const ctrl = "./controller.js";
+const ctrl = "./controller";
 
 app.use(express.json());
 app.use(
@@ -19,6 +19,7 @@ app.use(
 );
 
 //endpoints
+// app.post("/auth/register", ctrl.register);
 
 massive(CONNECTION_STRING).then(db => {
   app.set("db", db);
