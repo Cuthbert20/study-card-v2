@@ -4,6 +4,7 @@ import Register from "../Register/Register";
 
 function Login() {
   const [username, setUsername] = useState("");
+  const [register, setRegister] = useState(false);
   useEffect(() => {
     document.title = `${username}'s Study Cards`;
   });
@@ -12,8 +13,9 @@ function Login() {
   };
   console.log(username);
   function handleRegister() {
-    console.log("hit");
+    setRegister(!register);
   }
+  console.log(register);
   return (
     <div>
       <h1>Login Component</h1>
@@ -26,7 +28,7 @@ function Login() {
       <input type="text" placeholder="password" />
       <button>Submit</button>
       <button onClick={() => handleRegister()}>Register</button>
-      {/* conditionally rendering the Register Component */}
+      {register ? <Register /> : null}
     </div>
   );
 }
